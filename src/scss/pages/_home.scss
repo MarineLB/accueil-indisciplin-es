@@ -1,0 +1,158 @@
+body {
+	min-height:6800px ;
+  margin:0;
+  font-family:"Brandon Grotesque";
+  color: white;
+  font-size:20px;
+}
+
+a{
+  color: #fff;
+  text-decoration:none;
+  padding:1rem;
+  display: inline-block;
+  cursor: pointer;
+  &:hover{
+    color: #010724;
+  }
+}
+ul{
+  list-style-type: none;
+  padding:0;
+  text-align: center;
+}
+
+h1, h2{
+  font-family:"Brandon Grotesque";
+  color: white;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+h1{
+  font-size:2.2rem;
+  margin-top:3rem;
+  margin-bottom:0rem;
+  @media (min-width:768px) {
+    font-size:3rem;
+  }
+}
+h2{
+  font-size:2rem;
+  margin-top:0rem;
+}
+
+.display-none {
+	display: none;
+}
+
+.scroll {
+	width: 100vw;
+	height: 2000px;
+}
+
+.contenu{
+  display: flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.elements {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: 0;
+	perspective: 1000px;
+  display: flex;
+  justify-content: center;
+}
+
+#titre {
+	width: 100%;
+	height: 100%;
+	//color: rgb(2, 200, 242);
+	/*background-color: white;
+	-webkit-mask: url('../img/img-hero1.svg') no-repeat 50% 50%;
+	-webkit-mask-size: cover;*/
+	transition: scale ease;
+	will-change:transform;
+	shape-rendering: geometricPrecision;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    z-index: 500;
+    
+    img{
+        object-fit: cover;
+        height: 100vh;
+        width: 100vw;
+    }
+}
+   
+.contenu {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	//background-position: 50% 50%;
+	background-repeat: no-repeat;
+	transition: opacity 1500ms ease;
+    background-image: url('../img/illustration.png');
+	background-size: cover;
+    background-position: top;
+}
+
+.artistes{
+  display: none;
+  will-change:transform;
+  // TODO : box shadow jaune
+  // TODO : alterner rose/bleu/vert
+  // TODO : placer à endroit différent
+}
+
+.hide {
+	opacity: 1;
+}
+
+
+.couche{
+    width: 200%;
+    height: 200%;
+    display: inline-block;
+    position: absolute;
+    transform-origin: center;
+    bottom: 0;
+    top: 0;
+    margin: auto;
+  will-change:transform;
+
+  img{
+    min-width: 100%;
+    height: 100%;
+  }
+    
+    $elements: 15;
+    @for $i from 0 to $elements {
+      &:nth-child(#{$i}) {
+         z-index: calc(200 - #{$i});
+      }
+    }
+}
+
+.show-desktop{
+  display: none;
+  @media (min-width:1024px) {
+    display: block;
+  }
+}
+.hide-desktop{
+  display: block;
+  @media (min-width:1024px) {
+    display: none;
+  }
+}
