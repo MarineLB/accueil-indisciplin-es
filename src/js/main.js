@@ -1,5 +1,6 @@
 var titre = $('#titre'),
-    couches = $('.couche');
+    couches = $('.couche'),
+    artistes = $('.artiste');
 
 $( window ).scroll(function() {
     var scrollTop = $(this).scrollTop(),
@@ -9,12 +10,21 @@ $( window ).scroll(function() {
 
     couches.each(function (index){
         var current = $(this);
-        var translateIndex = index*1000+1000;
-        var rotate = opaScroll;
-
-        current.css("transform", 'translateZ('+(scrollTop-translateIndex+'px')+') rotate('+(rotate+'deg')+')');
-        //checkIfRemove(current);
+        var translateIndex = index*500+1000;
+        current.css("transform", 'translateZ('+(scrollTop-translateIndex+'px')+') rotate('+(opaScroll+'deg')+')');
+        var nextArtistes = current.next('.artistes').find('.artiste');
+        if(nextArtistes){
+            nextArtistes.each(function(indexArtiste){
+                $(this).css("transform", 'translateZ('+(scrollTop-translateIndex+(indexArtiste*100)-400+'px')+') rotate('+(opaScroll/10+'deg')+')');
+                console.log(indexArtiste*10);
+            })
+        }
     });
+    // artistes.each(function (index){
+    //     var current = $(this);
+    //     var translateIndex = index*500+2000;
+    //     current.css("transform", 'translateZ('+(scrollTop-translateIndex+'px')+') rotate('+(opaScroll/10+'deg')+')');
+    // });
 });
 
 /* supprimer la couche une fois qu'elle a dépassée le viewport
